@@ -1,0 +1,240 @@
+@font-face {
+    font-family: 'Nunito';
+    src: url("assets/font/Nunito-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* line-height: 1.6; */
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    color: #333333;
+    position: relative;
+    font-family: 'Nunito', sans-serif;
+}
+
+.bar-navigation {
+    /* position: relative; */
+
+    /* background-color: green; */
+    padding: 10px;
+
+}
+
+.bar-navigation .open,
+.menu .close {
+    font-size: 1.5rem;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.bar-navigation i:hover {
+    /* margin: 10px; */
+    border: 1px solid #000000;
+    /* font-size: 2rem; */
+}
+
+.bar-navigation .icon {
+    /* margin: 10px; */
+    padding: 10px;
+    /* font-size: 2rem; */
+}
+
+.menu {
+    padding: 10px;
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    background-color: #671b2b6c;
+    position: absolute;
+    z-index: 1;
+    transform: translateY(-100%);
+    color: #f4f4f4;
+    top: 0;
+    left: 0;
+}
+
+/* First Section  */
+
+.first-section {
+    width: 100%;
+}
+
+.first-section .photo {
+    margin-left: auto;
+    margin-bottom: 40px;
+    height: 300px;
+    width: 300px;
+    max-height: 60%;
+    max-width: 80%;
+    background-color: red;
+    position: relative;
+}
+
+.first-section .image {
+    height: auto;
+    width: 100%;
+}
+
+.first-section .photo .icon {
+    position: absolute;
+    color: #868686;
+    /* margin-left: auto; */
+    bottom: -30px;
+    right: 40px;
+    font-size: 90px;
+}
+
+.line {
+    height: 2px;
+    width: 300px;
+    max-width: 70%;
+    background-color: #848484;
+}
+
+.first-section .title,
+.third-section .title {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color: #848484;
+    font-weight: 400;
+}
+
+.first-section .icon {
+    margin-right: 5px;
+    /* background-color: yellow; */
+}
+
+.first-section .text,
+.third-section .text {
+    font-size: 14px;
+    /* background-color: red; */
+    /* font-weight: 400; */
+}
+
+/* Second Section  */
+
+.second-section {
+    /* background-color: #848484; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 15px;
+    font-size: 2.5rem;
+}
+
+.second-section p {
+    font-weight: bold;
+    color: #000000;
+}
+
+.second-section .s-text {
+    color: #671b2b;
+}
+
+/* Third Section */
+
+.third-section .mark {
+    font-size: 4rem;
+    font-weight: bold;
+    width: 100%;
+    padding: 0px 10px;
+    /* background-color: rebeccapurple; */
+}
+
+.third-section .close {
+    text-align: right;
+    /* font-size: 4rem; */
+    /* font-weight: bold; */
+}
+
+.third-section .content .text {
+    padding: 10px 40px;
+    text-align: justify;
+}
+
+.third-section .image {
+    height: auto;
+    width: 100%;
+}
+
+.third-section .photo {
+    /* height: fit-content; */
+    display: flex;
+
+    padding: 0;
+    background-color: red;
+}
+
+.third-section .image {
+    height: auto;
+    width: 100%;
+}
+
+/* --- */
+.fourth-section {
+    height: auto;
+    width: 100%;
+    background-color: #121212;
+    padding: 15px;
+}
+
+.fourth-section .item-btn {
+    display: flex;
+    align-items: center;
+    background-color: #121212;
+    color: white;
+    padding: 12px 20px;
+    border: 1px solid white;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    text-align: left;
+    transition: background 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.fourth-section .item-btn:hover {
+    /* font-weight: bold; */
+    /* text-decoration: underline; */
+    background-color: #222222;
+}
+
+.fourth-section .icon {
+    margin-right: 10px;
+}
+
+.fourth-section .item-img {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    background-color: #f8f9fa;
+}
+
+.fourth-section .item-img.abierta {
+    margin-bottom: 15px;
+    max-height: 400px;
+}
+
+.fourth-section .item-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* padding: 15px 0; */
+}
