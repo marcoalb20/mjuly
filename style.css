@@ -21,6 +21,7 @@ body {
     /* line-height: 1.6; */
     min-height: 100vh;
     background-color: #f4f4f4;
+    /* background-color: #f4f4f9; */
     color: #333333;
     position: relative;
     font-family: 'Nunito', sans-serif;
@@ -31,20 +32,23 @@ body {
 
     /* background-color: green; */
     padding: 10px;
-
+    position: fixed;
+    z-index: 1;
 }
 
 .bar-navigation .open,
 .menu .close {
     font-size: 1.5rem;
     border: 1px solid #000000;
+    color: #ffffff;
     border-radius: 10px;
     padding: 5px;
 }
 
 .bar-navigation i:hover {
     /* margin: 10px; */
-    border: 1px solid #000000;
+    border: 1px solid #ffffff;
+    /* border: 1px solid #000000; */
     /* font-size: 2rem; */
 }
 
@@ -75,28 +79,38 @@ body {
 }
 
 .first-section .photo {
+    display: flex;
     margin-left: auto;
     margin-bottom: 40px;
-    height: 300px;
-    width: 300px;
-    max-height: 60%;
-    max-width: 80%;
+    /* height: 300px; */
+    height: 100vh;
+    width: 100%;
+    /* max-height: 60%; */
+    /* max-width: 80%; */
     background-color: red;
     position: relative;
+
+    background-image: url('assets/images/load.jpg');
+    background-size: cover;
+    background-position: center;
+    /* background-attachment: fixed; */
+    /* esto es el parallax */
 }
 
 .first-section .image {
-    height: auto;
+    height: 100%;
     width: 100%;
 }
 
 .first-section .photo .icon {
     position: absolute;
-    color: #868686;
+    color: #671b2b;
     /* margin-left: auto; */
     bottom: -30px;
-    right: 40px;
+    /* bottom: -100px; */
+    right: 10px;
     font-size: 90px;
+    transition: bottom 0.5s ease-in-out;
 }
 
 .line {
@@ -115,9 +129,13 @@ body {
     font-weight: 400;
 }
 
-.first-section .icon {
+.first-section .date,
+.third-section .date {
+    padding-left: 15px;
+}
+
+.first-section .date .icon {
     margin-right: 5px;
-    /* background-color: yellow; */
 }
 
 .first-section .text,
@@ -131,20 +149,41 @@ body {
 
 .second-section {
     /* background-color: #848484; */
+    /* min-height: 200px; */
+    /* height: 100vh; */
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    padding: 60px 15px;
+    max-height: 100vh;
+    min-height: 100vh;
+    transition: max-height 1s ease-in-out; */
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 60px 15px;
     font-size: 2.5rem;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+    transition: max-height 1s ease-in-out;
 }
 
 .second-section p {
     font-weight: bold;
     color: #000000;
+
+    text-align: center;
 }
 
 .second-section .s-text {
     color: #671b2b;
+}
+
+.second-section span.word {
+    display: inline-block;
+    transition: transform 0.05s linear;
 }
 
 /* Third Section */
@@ -163,27 +202,70 @@ body {
     /* font-weight: bold; */
 }
 
+.third-section .parraf {
+    margin: 30px 0px;
+
+    /* background-color: red; */
+}
+
 .third-section .content .text {
     padding: 10px 40px;
     text-align: justify;
-}
-
-.third-section .image {
-    height: auto;
-    width: 100%;
+    /* background-color: red; */
 }
 
 .third-section .photo {
     /* height: fit-content; */
     display: flex;
 
-    padding: 0;
-    background-color: red;
+    padding: 15px;
+    /* background-color: red; */
 }
 
 .third-section .image {
     height: auto;
     width: 100%;
+    /* border: 1px solid white; */
+    border-radius: 25px;
+}
+
+.third-section .banner {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    background-color: red;
+    white-space: nowrap;
+    overflow: hidden;
+    /* padding-left: 15px; */
+}
+
+.third-section .banner .text {
+    /* font-size: 2rem;
+    font-weight: bold;
+    position: relative;
+    right: -100%;
+    transition: right 0.05s linear; */
+    font-size: 2rem;
+    font-weight: bold;
+    transition: transform 0.05s linear;
+}
+
+@keyframes shimmer {
+
+    0%,
+    100% {
+        text-shadow: none;
+    }
+
+    50% {
+        text-shadow: 0 0 8px #671b2b, 0 0 8px #ffffff;
+    }
+}
+
+
+.third-section .content .text span {
+    animation: shimmer 3s ease-in-out infinite;
+    animation-delay: 0.5;
 }
 
 /* --- */
