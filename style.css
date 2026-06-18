@@ -28,48 +28,71 @@ body {
 }
 
 .bar-navigation {
-    /* position: relative; */
-
-    /* background-color: green; */
     padding: 10px;
     position: fixed;
-    z-index: 1;
+    z-index: 100;
 }
 
-.bar-navigation .open,
-.menu .close {
+.bar-navigation .heart-lottie {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     font-size: 1.5rem;
-    border: 1px solid #000000;
-    color: #ffffff;
-    border-radius: 10px;
-    padding: 5px;
+
+    /* El color de tu icono (puedes usar tu borgoña #671b2b) */
+    color: #671b2b;
+
+    /* Dimensiones fijas para que sea perfectamente controlable */
+    /* width: 45px; */
+    /* height: 45px; */
+
+    /* EFECTO CÁPSULA ASIMÉTRICA (El secreto de la foto) */
+    /* top-left | top-right | bottom-right | bottom-left */
+    border-radius: 15px 15px 15px 5px;
+
+    /* EFECTO VIDRIO (Glassmorphism) */
+    background: rgba(255, 255, 255, 0.30);
+    backdrop-filter: blur(5PX);
+    -webkit-backdrop-filter: blur(12px);
+    /* Soporte para Safari / iOS */
+
+    /* Bordes finos y limpios estilo Apple */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+
+    /* Sombra suave para darle volumen */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05),
+        inset 0 1px 1px rgba(255, 255, 255, 0.6);
+
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
+
+
 
 .bar-navigation i:hover {
     /* margin: 10px; */
     border: 1px solid #ffffff;
+
+    transform: scale(1.05);
+    /* Sutil crecimiento */
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     /* border: 1px solid #000000; */
     /* font-size: 2rem; */
 }
 
-.bar-navigation .icon {
-    /* margin: 10px; */
-    padding: 10px;
-    /* font-size: 2rem; */
-}
+/* .bar-navigation:active {
+    transform: scale(0.95);
+    background: rgba(255, 255, 255, 0.5);
+} */
 
-.menu {
-    padding: 10px;
-    position: absolute;
-    height: 100%;
-    width: 50%;
-    background-color: #671b2b6c;
-    position: absolute;
-    z-index: 1;
-    transform: translateY(-100%);
-    color: #f4f4f4;
-    top: 0;
-    left: 0;
+.bar-navigation .icon {
+    height: 50px;
+    width: 50px;
+    /* margin: 10px; */
+    /* padding: 10px; */
+    /* font-size: ; */
 }
 
 /* First Section  */
@@ -109,7 +132,7 @@ body {
     bottom: -30px;
     /* bottom: -100px; */
     right: 10px;
-    font-size: 90px;
+    font-size: 70px;
     transition: bottom 0.5s ease-in-out;
 }
 
@@ -223,7 +246,7 @@ body {
 }
 
 .third-section .image {
-    height: auto;
+    height: 350px;
     width: 100%;
     /* border: 1px solid white; */
     border-radius: 25px;
@@ -233,19 +256,15 @@ body {
     height: 100px;
     display: flex;
     align-items: center;
-    background-color: red;
+    /* background-color: red; */
     white-space: nowrap;
     overflow: hidden;
+    padding: 100px 0;
     /* padding-left: 15px; */
 }
 
 .third-section .banner .text {
-    /* font-size: 2rem;
-    font-weight: bold;
-    position: relative;
-    right: -100%;
-    transition: right 0.05s linear; */
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: bold;
     transition: transform 0.05s linear;
 }
@@ -268,8 +287,55 @@ body {
     animation-delay: 0.5;
 }
 
-/* --- */
+/* Fourth Section */
+
+
 .fourth-section {
+    height: auto;
+    width: 100%;
+    /* background-color: #121212; */
+    /* padding: 15px; */
+}
+
+.fourth-section .option {
+    background-image: url('assets/images/load.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.fourth-section .content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.fourth-section .line-option {
+    margin-top: 50px;
+    height: 1px;
+    width: 100%;
+    /* max-width: 70%; */
+    background-color: #848484;
+
+}
+
+.fourth-section .text {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: #f4f4f4;
+}
+
+/* ------------------------------ */
+/* .fourth-section {
+    height: auto;
+    width: 100%;
+    background-color: #121212;
+    padding: 15px;
+}
+/* .fourth-section {
     height: auto;
     width: 100%;
     background-color: #121212;
@@ -293,8 +359,8 @@ body {
 }
 
 .fourth-section .item-btn:hover {
-    /* font-weight: bold; */
-    /* text-decoration: underline; */
+    font-weight: bold;
+    text-decoration: underline;
     background-color: #222222;
 }
 
@@ -318,5 +384,126 @@ body {
     width: 100%;
     height: auto;
     display: block;
-    /* padding: 15px 0; */
+    padding: 15px 0;
+} 
+*/
+
+/* Fifth Section */
+.fifth-section {
+    /* width: 100%; */
+    /* position: relative; */
+    position: relative;
+    overflow: hidden;
+    padding: 15px;
+}
+
+.fifth-section .section-content {
+    position: relative;
+    z-index: 2;
+}
+
+.fifth-section .bg-wave {
+    position: absolute;
+    top: 25%;
+    left: 0%;
+    width: 100%;
+    height: 20%;
+    z-index: 1;
+    background: radial-gradient(circle at 80% 20%, rgba(146, 43, 62, 0.7)),
+        radial-gradient(circle at 20% 60%, rgba(74, 21, 46, 0.6), transparent 60%),
+        radial-gradient(circle at 50% 40%, rgba(220, 168, 66, 0.4));
+    filter: blur(80px);
+    opacity: 0.8;
+}
+
+.fifth-section .text {
+    position: relative;
+    /* text-wrap: balance; */
+    font-size: 1rem;
+    padding: 50px;
+
+    filter: blur(10px);
+    opacity: 0;
+    transition: filter 0.8s ease, opacity 0.8s ease;
+}
+
+.fifth-section .text.revealed {
+    filter: blur(0);
+    opacity: 1;
+}
+
+
+.fifth-section .s-text {
+    text-align: right;
+}
+
+
+.fifth-section .title {
+    padding-top: 50px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.fifth-section .title span {
+    font-size: 2.5rem;
+    font-weight: bold
+}
+
+/* Sixth section */
+
+.sixth-section {
+    overflow: hidden;
+    /*  */
+    width: 100%;
+    background-color: transparent;
+    padding: 20px 0;
+}
+
+.sixth-section .carrousel {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+
+    width: max-content;
+    /* Obliga al contenedor a estirarse todo lo necesario sin romperse */
+
+    /* Llamamos a la animación:
+       - 20s: Velocidad (puedes cambiarlo a 15s para más rápido o 30s para más lento)
+       - linear: Movimiento constante sin acelerones ni frenadas
+       - infinite: No se detiene nunca
+    */
+    animation: carrouselInfinito 20s linear infinite;
+}
+
+.sixth-section:hover .carrousel {
+    /* animation-play-state: paused; */
+}
+
+.sixth-section .carrousel img {
+    margin: 15px;
+    height: 100px;
+    width: 100px;
+
+    flex-shrink: 0;
+    /* Evita que el navegador intente aplastar las imágenes */
+}
+
+@keyframes carrouselInfinito {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.sixth-section .ending {
+    /* background-color: red; */
+    padding: 80px 15px;
+}
+
+.sixth-section .text {
+    text-align: center;
+    color: #848484;
 }

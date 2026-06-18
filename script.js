@@ -1,24 +1,24 @@
-document.addEventListener('DOMContentLoaded', () => {
+// document.addEventListener('DOMContentLoaded', () => {
 
-    const items = [
-        { boton: 'botonF', section: 'sectionF' },
-        { boton: 'botonS', section: 'sectionS' },
-        { boton: 'botonT', section: 'sectionT' },
-    ];
+//     const items = [
+//         { boton: 'botonF', section: 'sectionF' },
+//         { boton: 'botonS', section: 'sectionS' },
+//         { boton: 'botonT', section: 'sectionT' },
+//     ];
 
-    items.forEach(({ boton, section }) => {
-        const btn = document.getElementById(boton);
-        const sec = document.getElementById(section);
-        const icon = btn.querySelector('.icon');
+//     items.forEach(({ boton, section }) => {
+//         const btn = document.getElementById(boton);
+//         const sec = document.getElementById(section);
+//         const icon = btn.querySelector('.icon');
 
-        btn.addEventListener('click', () => {
-            sec.classList.toggle('abierta');
-            const abierta = sec.classList.contains('abierta');
-            icon.className = `${abierta ? 'ri-subtract-fill' : 'ri-add-fill'} icon`;
-        });
-    });
+//         btn.addEventListener('click', () => {
+//             sec.classList.toggle('abierta');
+//             const abierta = sec.classList.contains('abierta');
+//             icon.className = `${abierta ? 'ri-subtract-fill' : 'ri-add-fill'} icon`;
+//         });
+//     });
 
-});
+// });
 
 // let iconHidden = false;
 let position = 55;
@@ -44,7 +44,7 @@ const positions = [
 const thirdText = document.getElementById('thirdSectionText');
 thirdText.innerHTML = thirdText.textContent.replace(/(\S)/g, '<span>$1</span>');
 
-const banner = document.getElementById('thirdSectionBanner');
+const bannerText = document.getElementById('thirdSectionBannerText');
 
 
 words.forEach((word, i) => {
@@ -56,6 +56,20 @@ words.forEach((word, i) => {
     word.style.opacity = pos.opacity;
 });
 
+const fifthTexts = document.querySelectorAll('.fifth-section .text');
+const counter = document.querySelector('.fifth-section .title span');
+const targetNumber = 9999; // cambia esto al número que quieras
+
+// const openMenuBtn = document.getElementById('openMenu')
+
+
+// openMenuBtn.addEventListener('click', () => {
+//     // menu.classList.add('abierto');
+//     // overlay.classList.add('abierto');
+//     // document.body.classList.add('no-scroll');
+// });
+
+
 // SCROLL //
 window.addEventListener('scroll', () => {
     const scroll = window.scrollY;
@@ -65,10 +79,12 @@ window.addEventListener('scroll', () => {
     const rectS = secondSection.getBoundingClientRect();
     const rectBanner = document.querySelector('.third-section .banner').getBoundingClientRect();
 
-    const bannePos = 100 - (bannerProgress * 150);
+
 
     let wordProgress = 1 - ((rectS.top - windowHeight * 0.15) / windowHeight);
     let bannerProgress = 1 - (rectBanner.top / windowHeight);
+
+    const bannePos = 100 - (bannerProgress * 180);
 
     firstSectionPhoto.style.backgroundPositionY = `${scroll * 0.5}px`;
 
@@ -76,7 +92,7 @@ window.addEventListener('scroll', () => {
     bannerProgress = Math.max(0, Math.min(1, bannerProgress));
 
     // 100% = empieza fuera a la derecha, 0% = llega al centro
-    banner.style.transform = `translateX(${bannePos}%)`;
+    bannerText.style.transform = `translateX(${bannePos}%)`;
 
     words.forEach((word, i) => {
         const x = parseFloat(word.dataset.x) * (1 - wordProgress);
@@ -84,6 +100,15 @@ window.addEventListener('scroll', () => {
         const scale = 1 + (parseFloat(word.dataset.scale) - 1) * (1 - wordProgress);
         word.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
         word.style.opacity = wordProgress;
+    });
+
+    fifthTexts.forEach(text => {
+        const rect = text.getBoundingClientRect();
+        if (rect.top <= window.innerHeight * 0.85) {
+            text.classList.add('revealed');
+        } else {
+            text.classList.remove('revealed');
+        }
     });
 
     if (rectF.bottom <= position) {
@@ -96,7 +121,55 @@ window.addEventListener('scroll', () => {
 });
 
 
-// document.querySelectorAll('.third-section .content .text span').forEach(span => {
-//     span.style.setProperty('--duration', `${2 + Math.random() * 4}s`);
-//     span.style.setProperty('--delay', `${Math.random() * 5}s`);
-// });
+
+// contador animado
+function animateCounter(target, duration = 2000) {
+    let start = 0;
+    const step = target / (duration / 16);
+    const interval = setInterval(() => {
+        start += step;
+        if (start >= target) {
+            counter.textContent = target;
+            clearInterval(interval);
+        } else {
+            counter.textContent = Math.floor(start);
+        }
+    }, 16);
+}
+
+// arranca cuando el titulo es visible
+const titleObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateCounter(targetNumber);
+            // titleObserver.disconnect();
+        }
+        else {
+            counter.textContent = 0;
+        }
+    });
+}, { threshold: 0.5 });
+
+titleObserver.observe(document.querySelector('.fifth-section .title'));
+
+
+
+const heartAnimation = lottie.loadAnimation({
+    container: document.getElementById('heartIcon'),
+    renderer: 'svg',
+    loop: false,
+    autoplay: false,
+    path: 'assets/animations/heart.json' // ruta donde guardaste el JSON
+});
+
+let liked = false;
+
+document.getElementById('heartIcon').addEventListener('click', () => {
+    if (!liked) {
+        heartAnimation.playSegments([0, 60], true); // ajusta el frame final
+        liked = true;
+    } else {
+        heartAnimation.playSegments([60, 0], true); // reversa
+        liked = false;
+    }
+});
