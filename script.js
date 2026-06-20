@@ -1,36 +1,11 @@
-// document.addEventListener('DOMContentLoaded', () => {
 
-//     const items = [
-//         { boton: 'botonF', section: 'sectionF' },
-//         { boton: 'botonS', section: 'sectionS' },
-//         { boton: 'botonT', section: 'sectionT' },
-//     ];
-
-//     items.forEach(({ boton, section }) => {
-//         const btn = document.getElementById(boton);
-//         const sec = document.getElementById(section);
-//         const icon = btn.querySelector('.icon');
-
-//         btn.addEventListener('click', () => {
-//             sec.classList.toggle('abierta');
-//             const abierta = sec.classList.contains('abierta');
-//             icon.className = `${abierta ? 'ri-subtract-fill' : 'ri-add-fill'} icon`;
-//         });
-//     });
-
-// });
-
-// let iconHidden = false;
 let position = 55;
 const firstSectionPhoto = document.getElementById('firstSectionPhoto');
 const firstSectionIcon = document.getElementById('firstSectionIcon');
 
-// 
 const secondSection = document.querySelector('.second-section');
 const fText = document.querySelector('.second-section .f-text');
 
-// Separar cada letra en un span
-// fText.innerHTML = fText.innerHTML.replace(/(\S)/g, '<span class="letter">$1</span>');
 
 const words = document.querySelectorAll('.second-section .word');
 const positions = [
@@ -60,14 +35,6 @@ const fifthTexts = document.querySelectorAll('.fifth-section .text');
 const counter = document.querySelector('.fifth-section .title span');
 const targetNumber = 9999; // cambia esto al número que quieras
 
-// const openMenuBtn = document.getElementById('openMenu')
-
-
-// openMenuBtn.addEventListener('click', () => {
-//     // menu.classList.add('abierto');
-//     // overlay.classList.add('abierto');
-//     // document.body.classList.add('no-scroll');
-// });
 
 
 // SCROLL //
@@ -91,7 +58,6 @@ window.addEventListener('scroll', () => {
     wordProgress = Math.max(0, Math.min(1, wordProgress));
     bannerProgress = Math.max(0, Math.min(1, bannerProgress));
 
-    // 100% = empieza fuera a la derecha, 0% = llega al centro
     bannerText.style.transform = `translateX(${bannePos}%)`;
 
     words.forEach((word, i) => {
@@ -153,23 +119,23 @@ const titleObserver = new IntersectionObserver((entries) => {
 titleObserver.observe(document.querySelector('.fifth-section .title'));
 
 
-
+// LOTTIE
 const heartAnimation = lottie.loadAnimation({
     container: document.getElementById('heartIcon'),
     renderer: 'svg',
     loop: false,
     autoplay: false,
-    path: 'assets/animations/heart.json' // ruta donde guardaste el JSON
+    path: 'assets/animations/heart.json'
 });
 
 let liked = false;
 
 document.getElementById('heartIcon').addEventListener('click', () => {
     if (!liked) {
-        heartAnimation.playSegments([0, 60], true); // ajusta el frame final
+        heartAnimation.playSegments([0, 60], true);
         liked = true;
     } else {
-        heartAnimation.playSegments([60, 0], true); // reversa
+        heartAnimation.playSegments([60, 0], true);
         liked = false;
     }
 });
