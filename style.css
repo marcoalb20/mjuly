@@ -1,3 +1,4 @@
+/* InitConfig */
 @font-face {
     font-family: 'Nunito';
     src: url("assets/font/Nunito-Regular.ttf");
@@ -25,6 +26,52 @@ body {
     font-family: 'Nunito', sans-serif;
 }
 
+/* Overlay */
+.dark-overlay {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.dark-overlay.active {
+    pointer-events: all;
+}
+
+.overlay-content {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    text-align: center;
+}
+
+.dark-overlay.show-content .overlay-content {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.qr-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.overlay-text {
+    color: white;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    font-family: Arial, sans-serif;
+}
+
+/* BarNavigation */
 .bar-navigation {
     padding: 10px;
     position: fixed;
@@ -61,7 +108,6 @@ body {
 }
 
 /* First Section  */
-
 .first-section {
     width: 100%;
 }
@@ -72,7 +118,6 @@ body {
     margin-bottom: 40px;
     height: 100vh;
     width: 100%;
-    background-color: red;
     position: relative;
     background-image: url('assets/images/front/image_1.webp');
     background-size: cover;
@@ -124,7 +169,6 @@ body {
 }
 
 /* Second Section  */
-
 .second-section {
     display: flex;
     align-items: center;
@@ -153,7 +197,6 @@ body {
 }
 
 /* Third Section */
-
 .third-section .mark {
     font-size: 4rem;
     font-weight: bold;
@@ -177,8 +220,6 @@ body {
 .third-section .photo {
     display: flex;
     padding: 15px;
-    /* background-color: red; */
-
     align-items: center;
     justify-content: center;
 }
@@ -210,6 +251,7 @@ body {
     transition: transform 0.05s linear;
 }
 
+/* Función Span */
 @keyframes shimmer {
 
     0%,
@@ -228,27 +270,33 @@ body {
     animation-delay: 0.5;
 }
 
-/* Fourth Section */
+.third-section .content .text br {
+    display: block;
+    content: "";
+    margin-top: 15px;
+}
 
+/* Fourth Section */
 .fourth-section {
     height: auto;
     width: 100%;
 }
 
+
+
 .fourth-section .option {
-    /* background-image: url('assets/images/load.jpg'); */
     background-size: cover;
     background-position: center;
     height: 100vh;
     position: sticky;
     top: 0;
-    /* backdrop-filter: blur(80px);
-    -webkit-backdrop-filter: blur(4px); */
-    /* Soporte para Safari */
+    filter: brightness(1);
+    transition: filter 0.4s ease;
 }
 
 .fourth-section .f-option {
     background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5)), url('assets/images/front/image_1.webp');
+
 }
 
 .fourth-section .s-option {
@@ -292,7 +340,6 @@ body {
 .fifth-section .section-content {
     position: relative;
     z-index: 2;
-    /* background-color: yellow; */
     width: 80vw;
     max-width: 600px;
 }
@@ -341,7 +388,6 @@ body {
 }
 
 /* Sixth section */
-
 .sixth-section {
     overflow: hidden;
     width: 100%;
@@ -367,6 +413,7 @@ body {
     flex-shrink: 0;
 }
 
+/* Carrousel */
 @keyframes carrouselInfinito {
     0% {
         transform: translateX(0);
@@ -386,6 +433,14 @@ body {
     color: #848484;
 }
 
+/* Footer */
+
+footer {
+    height: 100vh;
+    background-image: linear-gradient(to bottom, #f4f4f4, #000000, #000000);
+}
+
+/* Medias */
 /* Tablet screens and up */
 @media (min-width: 620px) {
 
@@ -406,10 +461,6 @@ body {
 /* Desktop screens and up */
 @media (min-width: 790px) {
 
-    body {
-        /* background-color: red; */
-    }
-
     .second-section {
         padding: 180px 0px;
         font-size: 6rem;
@@ -420,27 +471,21 @@ body {
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        /* height: 50vw; */
-        /* background-color: red; */
+        height: auto;
         max-width: 1100px;
         margin: 0px auto;
     }
 
     .third-section .parraf {
-        /* font-size: 1rem; */
         width: 50%;
-
-        max-height: 500px;
         max-width: 500px;
     }
 
     .third-section .image {
-        /* font-size: 1rem; */
         height: 40vw;
         width: 40vw;
         max-height: 500px;
         max-width: 500px;
-        /* width: 50%; */
     }
 
 
@@ -462,6 +507,9 @@ body {
         font-size: 2rem;
     }
 
+    .fourth-section .option:hover {
+        filter: brightness(0.8);
+    }
 
     .sixth-section .carrousel img {
         margin-right: 50px;
