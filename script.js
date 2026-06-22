@@ -115,26 +115,22 @@ window.addEventListener('scroll', () => {
     wordProgress = Math.max(0, Math.min(1, wordProgress));
     bannerProgress = Math.max(0, Math.min(1, bannerProgress));
 
-    //
     const footerSection = document.getElementById('over');
     const rectSixth = footerSection.getBoundingClientRect();
-
-    // 2. CÁLCULO DINÁMICO DEL OVERLAY (CORREGIDO PARA SCROLL NATIVO)
     const elementoVisibleEnPantalla = windowHeight - rectSixth.top;
     const rangoDeScrollEfecto = 450;
 
     let overlayProgress = elementoVisibleEnPantalla / rangoDeScrollEfecto;
     overlayProgress = Math.max(0, Math.min(1, overlayProgress));
 
-    // REPARADO: Ahora sí puede modificar el opacity porque 'overlay' existe arriba globalmente
     overlay.style.opacity = overlayProgress;
 
+    // Funcion Overlay
     if (overlayProgress >= 1) {
         overlay.classList.add('active', 'show-content');
     } else {
         overlay.classList.remove('active', 'show-content');
     }
-    // 
 
     // Funcion FirstSection (Icon)
     if (rectF.bottom <= position) {
