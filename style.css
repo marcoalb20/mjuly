@@ -122,9 +122,9 @@ body {
   height: 100vh;
   width: 100%;
   position: relative;
-  background-image: url("assets/images/front/1.webp");
+  background-image: url("assets/images/front/1.1.webp");
+  background-position: center;
   background-size: cover;
-  background-position: left;
 }
 
 .first-section .image {
@@ -312,7 +312,7 @@ body {
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5)),
     url("assets/images/front/5.1.webp");
-  background-position: left;
+  background-position: center;
 }
 
 .fourth-section .content {
@@ -470,6 +470,11 @@ footer {
 
 /* Desktop screens and up */
 @media (min-width: 790px) {
+  .first-section .photo {
+    background-image: url("assets/images/front/1.webp");
+    background-position: left;
+  }
+
   .second-section {
     padding: 180px 0px;
     font-size: 6rem;
